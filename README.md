@@ -1,5 +1,7 @@
 # Drone claw machine
 
+These are the products of the enPiT summer school in 2022.
+
 # How to use
 
 **1, Set up**
