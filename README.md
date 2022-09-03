@@ -2,12 +2,26 @@
 
 # How to use
 
-1, Set up
+**1, Set up**
 
-Please chech this: https://github.com/hisazumi/gnc
+1. Please chech this: https://github.com/hisazumi/gnc
+2. Install `image_view` package. Please try the following commands.
+
+```sh
+# cp /usr/share/gazebo-9/models/iris_with_standoffs/model.sdf ./model.sdf.bak
+# cp model.sdf /usr/share/gazebo-9/models/iris_with_standoffs/
+# rm -r ~/.gazebo/iris_with_standoffs
+
+sudo apt install curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
+
+sudo apt install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
+sudo apt install ros-melodic-image-view
+```
 
 
-2, Clone the following repositories.
+**2, Clone the following repositories.**
 
 - https://github.com/GNagahashi/drone_claw_machine
 - https://github.com/GNagahashi/enpit2022_summer
@@ -26,7 +40,7 @@ git clone https://github.com/GNagahashi/enpit2022_summer_drone_position.git
 ```
 
 
-3, Rename the repositories as follow.
+**3, Rename the repositories as follow.**
 
 - `enpit2022_summer` -> `gnc`
 - `enpit2022_summer_drone_ctrl` -> `drone_ctrl`
@@ -42,7 +56,7 @@ mv enpit2022_summer_drone_position/ drone_position
 ```
 
 
-4, Build packages on terminal.
+**4, Build packages on terminal.**
 
 If you have some error, please continue.
 
@@ -53,7 +67,7 @@ catkin build
 ```
 
 
-5, Build `gnc` package on BridgePoint.
+**5, Build `gnc` package on BridgePoint.**
 
 For more information on how to build on BridgePoint, please read this: https://github.com/hisazumi/gnc/blob/master/README.md  
 If you have some error, please try the following steps.
@@ -63,7 +77,7 @@ If you have some error, please try the following steps.
 3. Build `gnc` package on BridgePoint.
 
 
-6, Let's run!
+**6, Let's run!**
 
 Please try the following commands.
 
