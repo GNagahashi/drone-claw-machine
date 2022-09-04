@@ -13,7 +13,7 @@ These are the products of the enPiT summer school in 2022.
 
 ```sh
 cd
-git clone https://github.com/GNagahashi/drone_claw_machine.git
+git clone https://github.com/GNagahashi/drone-claw-machine.git
 
 sudo apt install curl
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
@@ -52,15 +52,15 @@ rosrun gazebo_ros gazebo --verbose worlds/iris_arducopter_runway.world
 
 **2, Clone the following repositories to `catkin_ws/src`.**
 
-- https://github.com/GNagahashi/enpit2022_summer
-- https://github.com/GNagahashi/enpit2022_summer_drone_ctrl
-- https://github.com/GNagahashi/enpit2022_summer_drone_position
+- https://github.com/GNagahashi/enpit2022-summer
+- https://github.com/GNagahashi/enpit2022-summer-drone-ctrl
+- https://github.com/GNagahashi/enpit2022-summer-drone-position
 
 ```sh
 cd ~/catkin_ws/src
-git clone https://github.com/GNagahashi/enpit2022_summer.git
-git clone https://github.com/GNagahashi/enpit2022_summer_drone_ctrl.git
-git clone https://github.com/GNagahashi/enpit2022_summer_drone_position.git
+git clone https://github.com/GNagahashi/enpit2022-summer.git
+git clone https://github.com/GNagahashi/enpit2022-summer-drone-ctrl.git
+git clone https://github.com/GNagahashi/enpit2022-summer-drone-position.git
 ```
 
 
