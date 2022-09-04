@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="chipster">
+  <static>true</static>
+    <link name='base_body'>
+      <pose>0 0 .1 0 0 0</pose>
+       <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>model://chipster/meshes/chipster.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>model://chipster/meshes/chipster.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+	<material>
+          <script>
+            <uri>model://chipster/mat/mat.material</uri>
+            <name>chipster_mat</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
