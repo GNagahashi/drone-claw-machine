@@ -111,7 +111,7 @@ roscore
 cd ~/drone_claw_machine
 ./simulator.sh
 
-cd Desktop
+cd ~/Desktop
 ./sitl.sh
 
 roslaunch iq_sim apm.launch
