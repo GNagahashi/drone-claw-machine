@@ -115,7 +115,7 @@ cd Desktop
 ./sitl.sh
 
 roslaunch iq_sim apm.launch
-# please wait a minute, check sitl console
+# Please wait a minute, check sitl console
 
 rosrun gnc ctrl
 
