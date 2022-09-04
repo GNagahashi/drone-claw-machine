@@ -7,34 +7,56 @@ These are the products of the enPiT summer school in 2022.
 **1, Set up**
 
 1. Please chech this: https://github.com/hisazumi/gnc
-2. Install `image_view` package. Please try the following commands.
+2. Set up github.
+3. Clone this repository. (check the below)
+4. Set up gazebo models. (check the below)
 
 ```sh
-# cp /usr/share/gazebo-9/models/iris_with_standoffs/model.sdf ./model.sdf.bak
-# cp model.sdf /usr/share/gazebo-9/models/iris_with_standoffs/
-# rm -r ~/.gazebo/iris_with_standoffs
+cd
+git clone https://github.com/GNagahashi/drone_claw_machine.git
 
 sudo apt install curl
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt update
 
+cd ~/drone_claw_machine/model_drone
+sudo cp /usr/share/gazebo-9/models/iris_with_standoffs/model.sdf ./model.sdf.bak
+sudo cp model.sdf /usr/share/gazebo-9/models/iris_with_standoffs/
+
+cd ~/.gazebo
+rm -rf models
+git clone https://github.com/osrf/gazebo_models.git
+export GAZEBO_MODEL_DATABASE_URI=""
+
+rm -rf ~/.gazebo/iris_with_standoffs
+
+cd ~/drone_claw_machine/model_gzobject
+cp -r * ~/.gazebo/models
+
+# Probably below packages are already installed.
+# Check: apt list | grep ros-melodic-gazebo- && apt list | grep ros-melodic-image-view
+# If you didn't install these packages, please run the following commands.
+
 sudo apt install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
 sudo apt install ros-melodic-image-view
+
+# If you want to check correctly set up, pleaes run the following commands.
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/opt/ros/melodic/lib/
+echo $GAZEBO_PLUGIN_PATH
+
+source /home/ubuntu/catkin_ws/devel/setup.bash
+
+rosrun gazebo_ros gazebo --verbose worlds/iris_arducopter_runway.world
 ```
 
 
-**2, Clone the following repositories.**
+**2, Clone the following repositories to `catkin_ws/src`.**
 
-- https://github.com/GNagahashi/drone_claw_machine
 - https://github.com/GNagahashi/enpit2022_summer
 - https://github.com/GNagahashi/enpit2022_summer_drone_ctrl
 - https://github.com/GNagahashi/enpit2022_summer_drone_position
 
 ```sh
-# e.g.
-cd
-git clone https://github.com/GNagahashi/drone_claw_machine.git
-
 cd ~/catkin_ws/src
 git clone https://github.com/GNagahashi/enpit2022_summer.git
 git clone https://github.com/GNagahashi/enpit2022_summer_drone_ctrl.git
