@@ -66,16 +66,16 @@ git clone https://github.com/GNagahashi/enpit2022-summer-drone-position.git
 
 **3, Rename the repositories as follow.**
 
-- `enpit2022_summer` -> `gnc`
-- `enpit2022_summer_drone_ctrl` -> `drone_ctrl`
-- `enpit2022_summer_drone_position` -> `drone_position`
+- `enpit2022-summer` -> `gnc`
+- `enpit2022-summer-drone-ctrl` -> `drone_ctrl`
+- `enpit2022-summer-drone-position` -> `drone_position`
 
 ```sh
 # e.g.
 cd ~/catkin_ws/src
-mv enpit2022_summer/ gnc
-mv enpit2022_summer_drone_ctrl/ drone_ctrl
-mv enpit2022_summer_drone_position/ drone_position
+mv enpit2022-summer/ gnc
+mv enpit2022-summer-drone-ctrl/ drone_ctrl
+mv enpit2022-summer-drone-position/ drone_position
 
 ```
 
