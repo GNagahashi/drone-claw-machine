@@ -6,7 +6,7 @@ These are the products of the enPiT summer school in 2022.
 
 **1, Set up**
 
-1. Please chech this: https://github.com/hisazumi/gnc
+1. Please check this: https://github.com/hisazumi/gnc
 2. Set up github.
 3. Clone this repository. (check the below)
 4. Set up gazebo models. (check the below)
