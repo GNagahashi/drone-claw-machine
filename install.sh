@@ -16,5 +16,7 @@ git clone https://github.com/GNagahashi/enpit2022-summer-drone-position.git dron
 cd ~/catkin_ws
 catkin clean -y
 catkin init
+catkin build
 
-echo "finished"
+echo ""
+echo "*** finished ***"
