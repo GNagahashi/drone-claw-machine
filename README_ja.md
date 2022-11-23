@@ -11,6 +11,23 @@
 wget https://raw.githubusercontent.com/GNagahashi/drone-claw-machine/main/install.sh -O- | sh
 ```
 
+次に、bridge pointでgncをビルドしてください
+1. bridge pointの起動(デスクトップ画面にショートカットあり)
+1. `select a directory as workspace`というウィンドウが起動、何もせず`Launch`を選択
+1. (ウィンドウ左上)`File`を選択
+1. `Import...`を選択
+1. `General`の`Existing Projects into Workspace`を選択
+1. `select root directory`の右横にある`browse...`を選択
+1. 左にあるメニューから`Home`を選択、`catkin_ws/src/gnc`に移動、ウィンドウ右上にある`OK`を選択
+1. ウィンドウ中央の`Projects:`に`gnc(/home/ubuntu/catkin_ws/src/gnc)`があることを確認する
+1. ウィンドウ右下にある`Finish`を選択
+1. ウィンドウ左上にある`Welcome`を選択する(これはしてもしなくても大丈夫です)
+1. ウィンドウ上部のメニューバーより`Project`→`Build All`を選択
+1. ウィンドウ右下の`Console`にログが流れる、`Build Finished`と表示されれば完了
+
+bridge pointでのビルド時、エラーが発生する場合は`~/catkin_ws`上で`catkin clean`と`catkin build`を行う  
+ターミナルとbridge pointの両方でビルドが成功すればok  
+(この辺の不具合は要調査)
 
 ## 2. 実行
 以下の順にコマンドを実行してください
