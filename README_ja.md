@@ -18,10 +18,10 @@ wget https://raw.githubusercontent.com/GNagahashi/drone-claw-machine/main/instal
 1. `Import...`を選択
 1. `General`の`Existing Projects into Workspace`を選択
 1. `select root directory`の右横にある`browse...`を選択
-1. 左にあるメニューから`Home`を選択、`catkin_ws/src/gnc`に移動、ウィンドウ右上にある`OK`を選択
+1. 左にあるメニューから`Home`を選択、右のファイル,ディレクトリ一覧から`catkin_ws/src/gnc`に移動、ウィンドウ右上にある`OK`を選択
 1. ウィンドウ中央の`Projects:`に`gnc(/home/ubuntu/catkin_ws/src/gnc)`があることを確認する
 1. ウィンドウ右下にある`Finish`を選択
-1. ウィンドウ左上にある`Welcome`を選択する(これはしてもしなくても大丈夫です)
+1. ウィンドウ左上にある`Welcome`を選択する
 1. ウィンドウ上部のメニューバーより`Project`→`Build All`を選択
 1. ウィンドウ右下の`Console`にログが流れる、`Build Finished`と表示されれば完了
 
