@@ -52,6 +52,12 @@ cd ~/Desktop && ./sitl.sh
 ```sh
 roslaunch iq_sim apm.launch
 ```
+このとき、iq_simを実行した画面に
+```
+[  INFO] [...]: FCU: EKF2 IMU0 is using GPS
+[  INFO] [...]: FCU: EKF2 IMU1 is using GPS
+```
+というようなメッセージが表示されるまで待つ(これをしないとうまくgncが動かない場合がある)  
 
 新しいターミナルのタブを開き、gncを実行します
 (gnc: ドローンの制御プログラム, bridge pointで作成したもの)
