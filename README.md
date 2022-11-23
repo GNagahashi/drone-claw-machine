@@ -25,7 +25,7 @@ sudo cp model.sdf /usr/share/gazebo-9/models/iris_with_standoffs/
 
 cd ~/.gazebo
 rm -rf models
-git clone https://github.com/osrf/gazebo_models.git
+git clone https://github.com/osrf/gazebo_models.git models
 export GAZEBO_MODEL_DATABASE_URI=""
 
 rm -rf ~/.gazebo/iris_with_standoffs
