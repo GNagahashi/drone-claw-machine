@@ -1,133 +1,80 @@
-# Drone claw machine
+# enpit サマースクール 2022
+前提条件
+- vmwareのインストールが完了している
+- 仮想環境のダウンロードが完了している
+- ダウンロードした仮想環境をvmwareで開けている(いつでも操作できる状態)
 
-These are the products of the enPiT summer school in 2022.
 
-# How to use
-
-**1, Set up**
-
-1. Please check this: https://github.com/hisazumi/gnc
-2. Set up github. (`git config --global`, `.netrc`, etc)
-3. Clone this repository. (check the below)
-4. Set up gazebo models. (check the below)
-
+## 1. セットアップ
+以下のコマンドを実行してください。
 ```sh
-cd
-git clone https://github.com/GNagahashi/drone-claw-machine.git
-
-sudo apt install curl
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo apt update
-
-cd ~/drone_claw_machine/model_drone
-sudo cp /usr/share/gazebo-9/models/iris_with_standoffs/model.sdf ./model.sdf.bak
-sudo cp model.sdf /usr/share/gazebo-9/models/iris_with_standoffs/
-
-cd ~/.gazebo
-rm -rf models
-git clone https://github.com/osrf/gazebo_models.git models
-export GAZEBO_MODEL_DATABASE_URI=""
-
-rm -rf ~/.gazebo/iris_with_standoffs
-
-cd ~/drone_claw_machine/model_gzobject
-cp -r * ~/.gazebo/models
-
-# Probably below packages are already installed.
-# Check: apt list | grep ros-melodic-gazebo- && apt list | grep ros-melodic-image-view
-# If you didn't install these packages, please run the following commands.
-
-sudo apt install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
-sudo apt install ros-melodic-image-view
-
-# If you want to check correctly set up, pleaes run the following commands.
-export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/opt/ros/melodic/lib/
-echo $GAZEBO_PLUGIN_PATH
-
-source /home/ubuntu/catkin_ws/devel/setup.bash
-
-rosrun gazebo_ros gazebo --verbose worlds/iris_arducopter_runway.world
+wget https://raw.githubusercontent.com/GNagahashi/drone-claw-machine/main/install.sh -O- | sh
 ```
 
+次に、bridge pointでgncをビルドしてください
+1. bridge pointの起動(デスクトップ画面にショートカットあり)
+1. `select a directory as workspace`というウィンドウが起動、何もせず`Launch`を選択
+1. (ウィンドウ左上)`File`を選択
+1. `Import...`を選択
+1. `General`の`Existing Projects into Workspace`を選択
+1. `select root directory`の右横にある`browse...`を選択
+1. 左にあるメニューから`Home`を選択、右のファイル,ディレクトリ一覧から`catkin_ws/src/gnc`に移動、ウィンドウ右上にある`OK`を選択
+1. ウィンドウ中央の`Projects:`に`gnc(/home/ubuntu/catkin_ws/src/gnc)`があることを確認する
+1. ウィンドウ右下にある`Finish`を選択
+1. ウィンドウ左上にある`Welcome`を選択する
+1. ウィンドウ上部のメニューバーより`Project`→`Build All`を選択
+1. ウィンドウ右下の`Console`にログが流れる、`Build Finished`と表示されれば完了
 
-**2, Clone the following repositories to `catkin_ws/src`.**
+bridge pointでのビルド時、エラーが発生する場合は`~/catkin_ws`上で`catkin clean`と`catkin build`を行う  
+ターミナルとbridge pointの両方でビルドが成功すればok  
+(この辺の不具合は要調査)
 
-- https://github.com/GNagahashi/enpit2022-summer
-- https://github.com/GNagahashi/enpit2022-summer-drone-ctrl
-- https://github.com/GNagahashi/enpit2022-summer-drone-position
+## 2. 実行
+以下の順にコマンドを実行してください
 
-```sh
-cd ~/catkin_ws/src
-git clone https://github.com/GNagahashi/enpit2022-summer.git
-git clone https://github.com/GNagahashi/enpit2022-summer-drone-ctrl.git
-git clone https://github.com/GNagahashi/enpit2022-summer-drone-position.git
-```
-
-
-**3, Rename the repositories as follow.**
-
-- `enpit2022-summer` -> `gnc`
-- `enpit2022-summer-drone-ctrl` -> `drone_ctrl`
-- `enpit2022-summer-drone-position` -> `drone_position`
-
-```sh
-# e.g.
-cd ~/catkin_ws/src
-mv enpit2022-summer/ gnc
-mv enpit2022-summer-drone-ctrl/ drone_ctrl
-mv enpit2022-summer-drone-position/ drone_position
-
-```
-
-
-**4, Build packages on terminal.**
-
-If you have some error, please continue.
-
-```sh
-# e.g.
-cd ~/catkin_ws
-catkin build
-```
-
-
-**5, Build `gnc` package on BridgePoint.**
-
-For more information on how to build on BridgePoint, please read this: https://github.com/hisazumi/gnc/blob/master/README.md  
-If you have some error, please try the following steps.
-
-1. Run `catkin clean` in `~/catkin_ws`.
-2. Run `catkin build` in `~/catkin_ws`.
-3. Build `gnc` package on BridgePoint.
-
-
-**6, Let's run!**
-
-Please try the following commands.
-
+まずroscoreを立ち上げます
 ```sh
 roscore
+```
 
-cd ~/drone_claw_machine
-./simulator.sh
+新しいターミナルのタブを開き、gazeboを立ち上げます
+```sh
+cd ~/drone_claw_machine && ./simulator.sh
+```
 
-cd ~/Desktop
-./sitl.sh
+新しいターミナルのタブを開き、sitlを立ち上げます
+```sh
+cd ~/Desktop && ./sitl.sh
+```
 
+新しいターミナルのタブを開き、iq_simを実行します
+(iq_sim: ドローンの制御に利用されるプログラム)
+```sh
 roslaunch iq_sim apm.launch
-# Please wait a minute, check sitl console
+```
+このとき、iq_simを実行した画面に
+```
+[  INFO] [...]: FCU: EKF2 IMU0 is using GPS
+[  INFO] [...]: FCU: EKF2 IMU1 is using GPS
+```
+というようなメッセージが表示されるまで待つ(これをしないとうまくgncが動かない場合がある)  
 
+新しいターミナルのタブを開き、gncを実行します
+(gnc: ドローンの制御プログラム, bridge pointで作成したもの)
+```sh
 rosrun gnc ctrl
+```
 
+新しいターミナルのタブを開き、以下のコマンドを実行します
+(その他必要なプログラムをlaunchファイルで一括起動します)
+```sh
 roslaunch drone_ctrl drone_ctrls.launch
 ```
 
-If you could not execute `roslaunch drone_ctrl drone_ctrls.launch`, pelase try the following commands.
+問題なく全てのプログラムが立ち上がった場合、
+- ドローンを操作するアプリ
+- ドローンに搭載されたカメラ
+- gazeboの画面
+を見やすい位置に移動させた上で、ドローンを操作してください
 
-```sh
-rosrun drone_position drone_position.py
-
-rosrun image_view image_view image:=/camera1/image_raw
-
-rosrun drone_ctrl drone_ctrl_gui.py
-```
+必要に応じで、sitlのコンソールなどを確認してください
