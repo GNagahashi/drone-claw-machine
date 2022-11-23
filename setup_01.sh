@@ -1,3 +1,4 @@
+cd ~/
 git clone https://github.com/GNagahashi/drone-claw-machine.git drone_claw_machine
 
 cd ~/drone_claw_machine/model_drone
